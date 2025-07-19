@@ -12,17 +12,19 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>Environments and Technologies Used</h2>
 
-- Microsoft Azure (Virtual Machines/Compute)
+- Microsoft Azure (Virtual Machines, Vnets, NSGs)
 - Remote Desktop
 - Active Directory Domain Services
-- PowerShell
+- PowerShell 7.x
+- Wireshark 4.0
 
 <h2>Operating Systems Used </h2>
 
 - Windows Server 2022
 - Windows 10 (21H2)
+- Ubuntu Linux 20.04 LTS
 
-<h2>High-Level Deployment and Configuration Steps</h2>
+<h2>Implementation Steps</h2>
 
 Create Azure Resource Group and Virtual Network
 Deploy Windows Server 2022 VM 
@@ -50,38 +52,56 @@ Subnet: Default (10.0.0.0/24)
 <p>
 <h2>Virtual Machine Deployment</h2>
 
-Deploy Windows Server 2022 (Domain Controller)
+Windows 10 Client VM
 
-Virtual Machines → Create → Azure Virtual Machine
-Name: window-vm
-Image: Windows Server 2022 Datacenter
-Size: Standard_D2s_v3 (2 vCPUs, 8GB RAM recommended)
-Username/Password: AdminUser/ComplexPassword123!
-Networking:
-Virtual Network: AD-VNet (created above)
-Public IP: Enabled (for initial RDP access)
+Setting	Value
+Name	win10-client
+Image	Windows 10 Pro, 21H2
+VNet	Lab2-Vnet
+NSG Rules	Auto-created RDP (3389)
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
 
-Deploy Windows 10 (Client Machine)
+Ubuntu Linux VM
 
-Repeat VM creation with:
-Name: Lab2-Vnet
-Image: Windows 10 Pro, 21H2
-Virtual Network: AD-VNet
+Setting	Value
+Name	ubuntu-test
+Authentication	Username/Password
+IP Assignment	Dynamic (10.0.0.x)
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+<h2>Tool Installation & Network Validation</h2>
 
+PowerShell 7 Installation
+
+powershell
+winget install --id Microsoft.PowerShell --accept-package-agreements
+
+Verification:
+$PSVersionTable.PSVersion
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
+
+Wireshark Installation
+
+powershell
+choco install wireshark -y
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+Wireshark capturing ICMP traffic between VMs
+Filter: icmp && ip.addr == 10.0.0.4 && ip.addr == 10.0.0.5
+Ping Tests
+<p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
 </p>
 <br />
