@@ -46,6 +46,9 @@ Create Virtual Network (VNet)
 During Windows Server VM creation:
 Virtual Network: Create new (AD-VNet)
 Subnet: Default (10.0.0.0/24)
+<p>
+<img width="1370" height="495" alt="Image" src="https://github.com/user-attachments/assets/c1832eb6-22b4-4775-ae04-5eacc650db65" />
+</p>
 </p>
 <br />
 
@@ -60,7 +63,7 @@ Image	Windows 10 Pro, 21H2
 VNet	Lab2-Vnet
 NSG Rules	Auto-created RDP (3389)
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="1052" height="725" alt="Image" src="https://github.com/user-attachments/assets/819b044d-a9e4-492b-9fbc-738118378cfc" />
 </p>
 
 Ubuntu Linux VM
@@ -70,7 +73,7 @@ Name	ubuntu-test
 Authentication	Username/Password
 IP Assignment	Dynamic (10.0.0.x)
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="1353" height="998" alt="Image" src="https://github.com/user-attachments/assets/0ad0c7f5-ea5c-4081-8d8e-de4bb8850e40" />
 </p>
 </p>
 <br />
@@ -85,23 +88,20 @@ winget install --id Microsoft.PowerShell --accept-package-agreements
 
 Verification:
 $PSVersionTable.PSVersion
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
 
 Wireshark Installation
 
 powershell
 choco install wireshark -y
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="1145" height="647" alt="Image" src="https://github.com/user-attachments/assets/3519e008-9c0c-4d63-a5ff-dd635a827d1f" />
 </p>
 
 Wireshark capturing ICMP traffic between VMs
 Filter: icmp && ip.addr == 10.0.0.4 && ip.addr == 10.0.0.5
 Ping Tests
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="2231" height="861" alt="Image" src="https://github.com/user-attachments/assets/0905cf50-139c-4761-9cfa-a807b1cb5afa" />
 </p>
 </p>
 <br />
