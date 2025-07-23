@@ -83,21 +83,16 @@ IP Assignment	Dynamic (10.0.0.x)
 
 PowerShell 7 Installation
 
-powershell
-winget install --id Microsoft.PowerShell --accept-package-agreements
-
-Verification:
-$PSVersionTable.PSVersion
-
 Wireshark Installation
 
-powershell
-choco install wireshark -y
+This will enable us to observe the traffic coming from and going to the virtual machines
+
 <p>
 <img width="1145" height="647" alt="Image" src="https://github.com/user-attachments/assets/3519e008-9c0c-4d63-a5ff-dd635a827d1f" />
 </p>
 
-Wireshark capturing ICMP traffic between VMs
+We can now see Wireshark capturing ICMP traffic between VMs
+
 Filter: icmp && ip.addr == 10.0.0.4 && ip.addr == 10.0.0.5
 Ping Tests
 <p>
